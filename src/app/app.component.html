@@ -1,0 +1,27 @@
+<style>
+</style>
+
+<div>
+  <label>
+    Nom projet
+    <input type="text" [(ngModel)]="nom"/>
+  </label>
+  <button (click)="onAddProjet();">Ajouter</button>
+
+  <h1>Liste des projets</h1>
+  <ul>
+    <li 
+      *ngFor="let p of projets, index as i"
+      [ngStyle]="{'color':(p.rendu)?'green':'red'}"
+      [ngClass]="(!p.rendu)?'encadre':'none'"
+    >
+      {{i}} - {{p.matiere}}
+      <button 
+        [disabled]="(p.rendu)?true:false"
+        (click)="onRendreProjet(p);"
+      >
+        Soumettre projet
+      </button>
+    </li>
+  </ul>
+</div>
